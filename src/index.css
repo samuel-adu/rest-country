@@ -1,10 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
-  --bg-dark: hsl(209, 23%, 22%);
-  --bg-dark-700: hsl(207, 26%, 17%);
-  --clr-dark: hsl(200, 15%, 8%);
+  /* 
+  - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
+  - Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
+  - Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
+  - Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
+  - Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
+  - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
+   */
+
+  --bg-primary: hsl(207, 26%, 17%);
+  --bg-secondary: hsl(209, 23%, 22%);
+
+  --text-dark: hsl(200, 15%, 8%);
+  --text-light: hsl(0, 0%, 100%);
+
   --clr-neutral: hsl(0, 0%, 52%);
-  --bg-light: hsl(0, 0%, 98%);
-  --clr-white: hsl(0, 0%, 100%);
+
+  --spacing-l: 9rem;
+  --spacing-m: 5rem;
+  --spacing-s: 2rem;
+  --spacing-xs: 1rem;
+  --spacing-base: 0.25rem;
+
+  --heading-6: 2.5rem;
+  --heading-5: 2.25rem;
+  --heading-4: 2rem;
+  --heading-3: 1.5rem;
+  --heading-2: 1.25rem;
+  --heading-1: 1.125rem;
+  --text-l: 1.5rem;
+  --text-m: 1.25rem;
+  --text-base: 1rem;
+  --text-s: 0.875rem;
+  --text-xs: 0.75rem;
+
+  --fw-bold: 800;
+  --fw-semibold: 600;
+  --fw-light: 300;
+
+  --ff-primary: 'Nunito Sans', sans-serif;
+
+  color-scheme: light dark;
+  background-color: var(--bg-primary);
+  color: var(--text-light);
 }
 
 * {
@@ -14,9 +56,8 @@
 }
 
 body {
-  background-color: var(--bg-dark-700);
-  color: var(--clr-white);
-  font-family: "Nunito Sans", sans-serif;
+  font-family: var(--ff-primary);
+  margin: 0;
 }
 
 img {
@@ -25,61 +66,51 @@ img {
 
 .container {
   width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-h2 {
-  font-size: 1.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 1em;
-}
-
-h3 {
-  font-size: 1rem;
-  font-weight: 800;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1.1;
 }
 
 p {
-  font-size: 0.875rem;
-  font-weight: 300;
   line-height: 1.6;
-  margin-bottom: 0.5em;
 }
 
-p span {
-  font-weight: 600;
-}
-
-nav {
-  padding: 2em 0;
-  background-color: var(--bg-dark);
-}
-
-.navbar {
+.form {
+  padding: var(--spacing-s) 0;
+  margin-bottom: var(--spacing-xs);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
 }
 
-.card-list {
-  padding: 2em;
+.form-control {
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-xs);
+  margin-bottom: var(--spacing-s);
+  border-radius: var(--spacing-base);
+  border: 0;
 }
 
-.card {
-  background-color: var(--bg-dark);
-  margin-bottom: 2em;
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-secondary: hsl(0, 0%, 100%);
+    --bg-primary: hsl(0, 0%, 98%);
+
+    color: var(--text-dark);
+    background-color: var(--bg-primary);
+  }
 }
 
-.card__desc {
-  padding: 2em;
-}
-
-@media (min-width: 500px) {
-  .card-list {
-    display: grid;
-    grid-template-columns: repeat(4, 260px);
-    gap: 4em;
+@media (min-width: 640px) {
+  .form {
+    flex-direction: row;
   }
 }

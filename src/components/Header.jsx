@@ -1,13 +1,14 @@
-import React from "react";
+import React from 'react';
+import '../styles/navbar.css';
 
 function Header() {
   return (
-    <nav>
+    <header>
       <div className="container navbar">
-        <h3>Where in the world?</h3>
+        <p>Where in the world?</p>
         <p>Dark Mode</p>
       </div>
-    </nav>
+    </header>
   );
 }
 

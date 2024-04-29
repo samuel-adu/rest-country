@@ -1,0 +1,31 @@
+.card-list {
+  display: grid;
+  gap: var(--spacing-s);
+}
+
+.card {
+  background-color: var(--bg-secondary);
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+
+.card-img {
+  object-fit: cover;
+  object-position: center;
+  height: 50%;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.card-desc {
+  padding: var(--spacing-xs);
+}
+
+@media (min-width: 640px) {
+  .card-list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-s);
+  }
+}
