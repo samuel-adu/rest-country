@@ -7,17 +7,18 @@ function Card({ country }) {
       <img className="card-img" src={country.flag} alt="" />
 
       <div className="card-desc">
-        <p>{country.name}</p>
+        <p className="card-heading">{country.name}</p>
+
         <p>
-          <span>Population: </span>
+          <span className="card-key">Population: </span>
           {country.population}
         </p>
         <p>
-          <span>Region: </span>
+          <span className="card-key">Region: </span>
           {country.region}
         </p>
         <p>
-          <span>Capital: </span>
+          <span className="card-key">Capital: </span>
           {country.capital}
         </p>
       </div>

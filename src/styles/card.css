@@ -1,11 +1,12 @@
 .card-list {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--spacing-s);
 }
 
 .card {
   background-color: var(--bg-secondary);
-  height: 400px;
+  /* height: 400px; */
   display: flex;
   flex-direction: column;
   border-radius: 8px;
@@ -23,9 +24,18 @@
   padding: var(--spacing-xs);
 }
 
+.card-heading {
+  font-size: var(--text-l);
+  font-weight: var(--fw-bold);
+  margin-bottom: auto;
+}
+
+.card-details {
+  margin-top: auto;
+}
+
 @media (min-width: 640px) {
   .card-list {
-    grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-s);
   }
 }
