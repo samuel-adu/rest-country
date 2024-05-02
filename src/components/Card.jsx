@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/card.css';
 
-function Card({ country }) {
+function CountryCard({ country }) {
   return (
     <div className="card">
       <img className="card-img" src={country.flag} alt="" />
@@ -26,4 +26,4 @@ function Card({ country }) {
   );
 }
 
-export default Card;
+export default CountryCard;
