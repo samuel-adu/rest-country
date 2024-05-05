@@ -1,0 +1,52 @@
+.flag {
+  margin-bottom: var(--spacing-m);
+}
+
+.current-country-name {
+  margin-bottom: var(--spacing-s);
+}
+
+.current-country p {
+  margin-bottom: var(--spacing-base);
+}
+
+.col {
+  margin-bottom: var(--spacing-s);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--bg-secondary);
+  color: inherit;
+  font-size: var(--text-s);
+  text-transform: capitalize;
+  border-radius: 4px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 120px;
+  margin-bottom: var(--spacing-m);
+}
+
+.border-links {
+  display: flex;
+  gap: var(--spacing-base);
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+  font-size: var(--text-s);
+}
+
+@media (min-width: 860px) {
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--spacing-l);
+  }
+}
