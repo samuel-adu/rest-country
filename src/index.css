@@ -92,3 +92,8 @@ p {
     background-color: var(--bg-primary);
   }
 }
+
+.border {
+  display: flex;
+  gap: 0.5rem;
+}

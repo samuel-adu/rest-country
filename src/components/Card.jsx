@@ -1,29 +1,33 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/card.css';
 
-function CountryCard({ country }) {
+function Card({ country }) {
+  const { name, flag, population, region, capital, alpha3Code } = country;
+
   return (
-    <div className="card">
-      <img className="card-img" src={country.flag} alt="" />
+    <Link to={`/${alpha3Code}`}>
+      <div className="card">
+        <img className="card-img" src={flag} alt="" />
 
-      <div className="card-desc">
-        <p className="card-heading">{country.name}</p>
+        <div className="card-desc">
+          <p className="card-heading">{name}</p>
 
-        <p>
-          <span className="card-key">Population: </span>
-          {country.population}
-        </p>
-        <p>
-          <span className="card-key">Region: </span>
-          {country.region}
-        </p>
-        <p>
-          <span className="card-key">Capital: </span>
-          {country.capital}
-        </p>
+          <p>
+            <span className="card-key">Population: </span>
+            {population}
+          </p>
+          <p>
+            <span className="card-key">Region: </span>
+            {region}
+          </p>
+          <p>
+            <span className="card-key">Capital: </span>
+            {capital}
+          </p>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
-export default CountryCard;
+export default Card;
