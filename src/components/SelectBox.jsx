@@ -5,17 +5,17 @@ function SelectBox({
   country,
 }) {
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
+    <form className="form" onSubmit={(e) => e.preventDefault()}>
       <input
-        className="form-control"
+        className="form-control search-box"
         type="text"
-        placeholder="search for a country"
+        placeholder="Search for a country..."
         name="country"
         value={country}
         onChange={handleCountrySearch}
       />
       <select
-        className="form-control"
+        className="form-control select-box"
         name="region"
         value={region}
         onChange={handleRegionChange}

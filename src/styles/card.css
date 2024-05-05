@@ -1,7 +1,9 @@
 .card-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-s);
+  grid-template-columns: repeat(auto-fit, 270px);
+  gap: var(--spacing-m);
+  /* align-items: center; */
+  justify-content: center;
 }
 
 .card {
@@ -14,13 +16,13 @@
 .card-img {
   object-fit: cover;
   object-position: center;
-  height: 50%;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
+  height: 200px;
 }
 
 .card-desc {
-  padding: var(--spacing-xs);
+  padding: var(--spacing-s);
 }
 
 .card-heading {
@@ -29,12 +31,17 @@
   margin-bottom: auto;
 }
 
+.card-text {
+  font-size: var(--text-base);
+  font-weight: var(--fw-semibold);
+}
+
 .card-details {
   margin-top: auto;
 }
 
 @media (min-width: 640px) {
   .card-list {
-    gap: var(--spacing-s);
+    justify-content: start;
   }
 }

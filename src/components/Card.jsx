@@ -7,22 +7,22 @@ function Card({ country }) {
   return (
     <Link to={`/${alpha3Code}`}>
       <div className="card">
-        <img className="card-img" src={flag} alt="" />
+        <img className="card-img" src={flag} alt={`flag of ${name}`} />
 
         <div className="card-desc">
           <p className="card-heading">{name}</p>
 
-          <p>
-            <span className="card-key">Population: </span>
-            {population}
+          <p className="card-text">
+            Population:
+            <span>{population.toLocaleString()}</span>
           </p>
-          <p>
-            <span className="card-key">Region: </span>
-            {region}
+          <p className="card-text">
+            Continent:
+            <span>{region}</span>
           </p>
-          <p>
-            <span className="card-key">Capital: </span>
-            {capital}
+          <p className="card-text">
+            Capital:
+            <span>{capital}</span>
           </p>
         </div>
       </div>

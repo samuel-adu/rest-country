@@ -20,23 +20,15 @@
 
   --clr-neutral: hsl(0, 0%, 52%);
 
-  --spacing-l: 9rem;
-  --spacing-m: 5rem;
+  --spacing-l: 8rem;
+  --spacing-m: 4rem;
   --spacing-s: 2rem;
   --spacing-xs: 1rem;
-  --spacing-base: 0.25rem;
+  --spacing-base: 0.5rem;
 
-  --heading-6: 2.5rem;
-  --heading-5: 2.25rem;
-  --heading-4: 2rem;
-  --heading-3: 1.5rem;
-  --heading-2: 1.25rem;
-  --heading-1: 1.125rem;
-  --text-l: 1.5rem;
-  --text-m: 1.25rem;
-  --text-base: 1rem;
-  --text-s: 0.875rem;
-  --text-xs: 0.75rem;
+  --text-l: 1rem;
+  --text-base: 0.875rem;
+  --text-s: 0.75rem;
 
   --fw-bold: 800;
   --fw-semibold: 600;
@@ -77,10 +69,24 @@ h4,
 h5,
 h6 {
   line-height: 1.1;
+  font-weight: var(--fw-bold);
 }
 
 p {
   line-height: 1.6;
+  font-weight: var(--fw-semibold);
+}
+
+p span {
+  font-weight: var(--fw-light);
+  margin-left: 0.125rem;
+}
+
+a {
+  text-decoration: none;
+  font-family: var(--ff-primary);
+  font-size: var(--text-s);
+  color: inherit;
 }
 
 @media (prefers-color-scheme: light) {

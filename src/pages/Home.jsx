@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/homepage.css';
+import '../styles/home.css';
 import CardList from '../components/CardList';
 import SelectBox from '../components/SelectBox';
 
