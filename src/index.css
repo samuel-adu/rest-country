@@ -1,24 +1,15 @@
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 :root {
-  /* 
-  - Dark Blue (Dark Mode Elements): hsl(209, 23%, 22%)
-  - Very Dark Blue (Dark Mode Background): hsl(207, 26%, 17%)
-  - Very Dark Blue (Light Mode Text): hsl(200, 15%, 8%)
-  - Dark Gray (Light Mode Input): hsl(0, 0%, 52%)
-  - Very Light Gray (Light Mode Background): hsl(0, 0%, 98%)
-  - White (Dark Mode Text & Light Mode Elements): hsl(0, 0%, 100%)
-   */
+  --bg-primary: hsl(0, 0%, 95%);
+  --bg-secondary: hsl(0, 0%, 100%);
+  --text-primary: hsl(200, 15%, 8%);
 
-  --bg-primary: hsl(207, 26%, 17%);
-  --bg-secondary: hsl(209, 23%, 22%);
-
-  --text-dark: hsl(200, 15%, 8%);
-  --text-light: hsl(0, 0%, 100%);
-
-  --clr-neutral: hsl(0, 0%, 52%);
+  --clr-shadow: hsl(0, 0%, 52%);
 
   --spacing-l: 8rem;
   --spacing-m: 4rem;
@@ -36,20 +27,17 @@
 
   --ff-primary: 'Nunito Sans', sans-serif;
 
-  color-scheme: light dark;
-  background-color: var(--bg-primary);
-  color: var(--text-light);
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  /* color-scheme: light dark;
+  --bg-primary: hsl(0, 0%, 95%);
+  --bg-secondary: hsl(0, 0%, 100%);
+  --text-primary: hsl(200, 15%, 8%); */
 }
 
 body {
-  font-family: var(--ff-primary);
   margin: 0;
+  font-family: var(--ff-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 img {
@@ -89,17 +77,16 @@ a {
   color: inherit;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
-    --bg-primary: hsl(0, 0%, 95%);
-    --bg-secondary: hsl(0, 0%, 100%);
-
-    color: var(--text-dark);
-    background-color: var(--bg-primary);
+    --bg-primary: hsl(207, 26%, 17%);
+    --bg-secondary: hsl(209, 23%, 22%);
+    --text-primary: hsl(0, 0%, 100%);
   }
-}
+} */
 
-.border {
-  display: flex;
-  gap: 0.5rem;
+.dark {
+  --bg-primary: hsl(207, 26%, 17%);
+  --bg-secondary: hsl(209, 23%, 22%);
+  --text-primary: hsl(0, 0%, 100%);
 }

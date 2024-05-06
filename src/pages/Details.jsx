@@ -56,11 +56,13 @@ function Details({ data }) {
             <div className="col">
               <p>
                 Top Level Domain:
-                <span>{currentCountry.topLevelDomain[0]}</span>
+                <span>{currentCountry.topLevelDomain.map((item) => item)}</span>
               </p>
               <p>
                 Currencies:
-                <span>{currentCountry.currencies[0].name}</span>
+                {currentCountry.currencies.map((item) => (
+                  <span>{item.name}</span>
+                ))}
               </p>
               <p>
                 Languages:

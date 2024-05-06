@@ -3,9 +3,11 @@
 }
 
 .form-control {
-  font-size: 1rem;
-  line-height: 1.5;
   background-color: var(--bg-secondary);
+  font-size: 1rem;
+  font-family: var(--ff-primary);
+  line-height: 1.5;
+  color: var(--text-primary);
   margin-bottom: var(--spacing-s);
   padding: 1rem 1.5rem;
   border: 1px solid var(--bg-primary);
