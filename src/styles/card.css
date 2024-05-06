@@ -1,8 +1,8 @@
 .card-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, 270px);
+  grid-template-rows: auto;
   gap: var(--spacing-m);
-  /* align-items: center; */
   justify-content: center;
 }
 
@@ -18,7 +18,6 @@
   object-position: center;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
-  height: 200px;
 }
 
 .card-desc {

@@ -24,6 +24,10 @@
   border-radius: 4px;
 }
 
+.btn:hover {
+  background-color: var(--clr-shadow);
+}
+
 .back-btn {
   display: flex;
   align-items: center;
@@ -40,6 +44,11 @@
   align-items: flex-end;
   justify-content: flex-start;
   font-size: var(--text-s);
+}
+
+.border {
+  display: flex;
+  gap: 0.5rem;
 }
 
 @media (min-width: 860px) {
