@@ -1,49 +1,25 @@
-import { useState } from 'react';
 import '../styles/home.css';
+import { useState, useEffect } from 'react';
 import CardList from '../components/CardList';
 import SelectBox from '../components/SelectBox';
 
-function HomePage({
-  data,
-  filteredData,
-  setFilteredData,
-  handleCardListClick,
-}) {
-  const [region, setRegion] = useState('');
-  const [country, setCountry] = useState('');
+function HomePage() {
+  const [data, setData] = useState([]);
+  const [countryList, setCountryList] = useState([]);
 
-  function filterByRegion(event) {
-    const { value } = event.target;
-    setRegion(value);
-    setFilteredData(
-      data.filter((item) => item.region.toLowerCase() === value.toLowerCase())
-    );
-    setCountry('');
-  }
-
-  function findCountryByName(event) {
-    const { value } = event.target;
-    setCountry(value);
-    setFilteredData(
-      data.filter((item) =>
-        item.name.toLowerCase().includes(value.toLowerCase())
-      )
-    );
-    setRegion('');
-  }
+  useEffect(() => {
+    fetch(`https://restcountries.com/v3.1/all`)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        setCountryList(data);
+      });
+  }, []);
 
   return (
     <div className="container">
-      <SelectBox
-        country={country}
-        handleCountrySearch={findCountryByName}
-        handleRegionChange={filterByRegion}
-        region={region}
-      />
-      <CardList
-        filteredData={filteredData}
-        onCardListClick={handleCardListClick}
-      />
+      <SelectBox setData={setData} />
+      <CardList countryData={countryList} />
     </div>
   );
 }

@@ -17,7 +17,7 @@
 .btn {
   display: inline-block;
   padding: 0.5rem 1.5rem;
-  background-color: var(--bg-secondary);
+  background-color: #00bfff;
   color: inherit;
   font-size: var(--text-s);
   text-transform: capitalize;
@@ -26,6 +26,7 @@
 
 .btn:hover {
   background-color: var(--clr-shadow);
+  color: #ffffff;
 }
 
 .back-btn {

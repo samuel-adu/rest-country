@@ -1,18 +1,27 @@
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FaArrowLeftLong } from 'react-icons/fa6';
-
 import '../styles/details.css';
 
-function Details({ data }) {
-  const param = useParams();
+function Details() {
+  const [currentCountry, setCurrentCountry] = useState(null);
+  const { code } = useParams();
 
-  const currentCountry = data.find(
-    (item) => item.alpha3Code.toLowerCase() === param.id.toLowerCase()
-  );
+  useEffect(() => {
+    fetch(`https://restcountries.com/v3.1/alpha/${code}`)
+      .then((res) => res.json())
+      .then((data) => setCurrentCountry(data[0]));
+  }, [code]);
 
+  console.log(currentCountry);
   if (!currentCountry) {
-    return <h1>Loading</h1>;
+    return (
+      <div className="container">
+        <p>Loading</p>
+      </div>
+    );
   }
+  console.log(currentCountry.currencies);
 
   return (
     <div className="container">
@@ -22,18 +31,18 @@ function Details({ data }) {
       </Link>
       <div className="row current-country">
         <img
-          src={currentCountry.flag}
-          alt={`flag of ${currentCountry.name}`}
+          src={currentCountry.flags.svg}
+          alt={`flag of ${currentCountry.name.common}`}
           className="flag"
         />
 
         <div className="col">
-          <h2 className="current-country-name">{currentCountry.name}</h2>
+          <h2 className="current-country-name">{currentCountry.name.common}</h2>
 
           <div className="row">
             <div className="col">
               <p>
-                Native Name:<span>{currentCountry.nativeName}</span>
+                Official Name:<span>{currentCountry.name.official}</span>
               </p>
               <p>
                 Population:
@@ -56,20 +65,20 @@ function Details({ data }) {
             <div className="col">
               <p>
                 Top Level Domain:
-                <span>{currentCountry.topLevelDomain.map((item) => item)}</span>
+                <span>{currentCountry.tld.map((item) => item)}</span>
               </p>
               <p>
                 Currencies:
-                {currentCountry.currencies.map((item) => (
-                  <span>{item.name}</span>
-                ))}
+                {/* <span>{currentCountry.currencies.name}</span> */}
               </p>
               <p>
                 Languages:
+                {/* 
                 {currentCountry.languages &&
                   currentCountry.languages.map((language) => (
                     <span>{language.name}</span>
                   ))}
+                */}
               </p>
             </div>
           </div>

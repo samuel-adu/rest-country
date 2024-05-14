@@ -1,9 +1,9 @@
 import Card from './Card';
 
-function CardList({ filteredData }) {
+function CardList({ countryData }) {
   return (
     <div className="card-list">
-      {filteredData.map((item) => (
+      {countryData.map((item) => (
         <Card key={item.numericCode} country={item} />
       ))}
     </div>
