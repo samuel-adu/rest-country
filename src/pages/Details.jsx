@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useState, useEffect, Fragment } from 'react';
+import { useParams } from 'react-router-dom';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import '../styles/details.css';
+import Button from '../components/Button';
 
 function Details() {
   const [currentCountry, setCurrentCountry] = useState(null);
-  const { code } = useParams();
+  const { name } = useParams();
 
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/alpha/${code}`)
+    fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
       .then((res) => res.json())
       .then((data) => setCurrentCountry(data[0]));
-  }, [code]);
+  }, [name]);
 
-  console.log(currentCountry);
   if (!currentCountry) {
     return (
       <div className="container">
@@ -21,14 +21,14 @@ function Details() {
       </div>
     );
   }
-  console.log(currentCountry.currencies);
 
   return (
     <div className="container">
-      <Link to="/" className="btn btn-primary back-btn">
+      <Button path={'..'} className="back-btn">
         <FaArrowLeftLong />
         <span>back</span>
-      </Link>
+      </Button>
+
       <div className="row current-country">
         <img
           src={currentCountry.flags.svg}
@@ -89,13 +89,9 @@ function Details() {
             <div className="border-links">
               {currentCountry.borders
                 ? currentCountry.borders.map((country) => (
-                    <Link
-                      to={`/${country}`}
-                      key={country}
-                      className="btn btn--secondary"
-                    >
-                      {country}
-                    </Link>
+                    <Fragment key={country}>
+                      <Button path={`/${country}`}>{country}</Button>
+                    </Fragment>
                   ))
                 : null}
             </div>

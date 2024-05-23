@@ -14,30 +14,6 @@
   margin-bottom: var(--spacing-s);
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.5rem 1.5rem;
-  background-color: #00bfff;
-  color: inherit;
-  font-size: var(--text-s);
-  text-transform: capitalize;
-  border-radius: 4px;
-}
-
-.btn:hover {
-  background-color: var(--clr-shadow);
-  color: #ffffff;
-}
-
-.back-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 120px;
-  margin-bottom: var(--spacing-m);
-}
-
 .border-links {
   display: flex;
   gap: var(--spacing-base);
@@ -50,6 +26,10 @@
 .border {
   display: flex;
   gap: 0.5rem;
+}
+
+.back-btn {
+  margin-bottom: var(--spacing-m);
 }
 
 @media (min-width: 860px) {

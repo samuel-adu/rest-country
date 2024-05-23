@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom';
 import '../styles/card.css';
 
-function Card({ country }) {
-  const { name, flags, population, region, capital, cca3 } = country;
-
+function Card({ name, flag, population, region, capital, showCountryDetails }) {
   return (
-    <Link to={`/${cca3}`}>
+    <Link to={`/${name}`} onClick={showCountryDetails}>
       <div className="card">
-        <img className="card-img" src={flags.svg} alt={`flag of ${name}`} />
+        <img className="card-img" src={flag} alt={`flag of ${name}`} />
 
         <div className="card-desc">
-          <p className="card-heading">{name.common}</p>
+          <p className="card-heading">{name}</p>
           <p className="card-text">
             Population:
             <span>{population.toLocaleString()}</span>

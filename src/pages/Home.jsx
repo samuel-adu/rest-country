@@ -1,7 +1,9 @@
+import React from 'react';
 import '../styles/home.css';
-import { useState, useEffect } from 'react';
-import CardList from '../components/CardList';
-import SelectBox from '../components/SelectBox';
+import { useEffect, useState } from 'react';
+import Card from '../components/Card';
+import SelectOption from '../components/SelectBox';
+import SearchInput from '../components/SearchBox';
 
 function HomePage() {
   const [data, setData] = useState([]);
@@ -18,8 +20,24 @@ function HomePage() {
 
   return (
     <div className="container">
-      <SelectBox setData={setData} />
-      <CardList countryData={countryList} />
+      <div className="query-bar">
+        <SearchInput data={data} setCountryList={setCountryList} />
+        <SelectOption data={data} setCountryList={setCountryList} />
+      </div>
+
+      <div className="card-list">
+        {countryList.map((item) => (
+          <React.Fragment key={item.name.common}>
+            <Card
+              name={item.name.common}
+              flag={item.flags.svg}
+              region={item.region}
+              population={item.population}
+              capital={item.capital}
+            />
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 }

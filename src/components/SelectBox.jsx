@@ -1,37 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-function SelectBox() {
-  const [country, setCountry] = useState('');
+function SelectBox({ setCountryList, data }) {
   const [region, setRegion] = useState('');
 
-  function searchCountry(event) {
-    event.preventDefault();
+  function handleChange(event) {
+    const { value } = event.target;
+    setRegion(value);
+    if (value) {
+      setCountryList(
+        data.filter((item) => item.region.toLowerCase() === value)
+      );
+    }
   }
 
   return (
-    <form className="form" onSubmit={searchCountry}>
-      <input
-        className="form-control search-box"
-        type="text"
-        placeholder="Search for a country..."
-        name="country"
-        value={country}
-        onChange={(event) => setCountry(event.target.value)}
-      />
-      <select
-        className="form-control select-box"
-        name="region"
-        value={region}
-        onChange={(event) => setRegion(event.target.value)}
-      >
-        <option value="">Filter by Region</option>
-        <option value="africa">Africa</option>
-        <option value="asia">Asia</option>
-        <option value="americas">America</option>
-        <option value="europe">Europe</option>
-        <option value="oceania">Oceania</option>
-      </select>
-    </form>
+    <select
+      className="form-control select-box"
+      name="region"
+      value={region}
+      onChange={handleChange}
+    >
+      <option value="">Filter by Region</option>
+      <option value="africa">Africa</option>
+      <option value="asia">Asia</option>
+      <option value="americas">America</option>
+      <option value="europe">Europe</option>
+      <option value="oceania">Oceania</option>
+    </select>
   );
 }
 

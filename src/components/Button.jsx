@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-
-function Button({ text, handleClick }) {
+import '../styles/button.css';
+function Button({ children, path, className }) {
   return (
-    <Link to={`/${text}`} onClick={handleClick}>
-      {text}
+    <Link to={path} className={`btn ${className}`}>
+      {children}
     </Link>
   );
 }

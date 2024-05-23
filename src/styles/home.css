@@ -1,5 +1,5 @@
 .form {
-  display: grid;
+  position: relative;
 }
 
 .form-control {
@@ -7,17 +7,27 @@
   font-size: 1rem;
   font-family: var(--ff-primary);
   line-height: 1.5;
-  color: var(--text-primary);
+  color: var(--clr-shadow);
   margin-bottom: var(--spacing-s);
   padding: 1rem 1.5rem;
   border: 1px solid var(--bg-primary);
+  border-radius: 4px;
   appearance: none;
   outline: var(--bg-primary);
+  box-shadow: 0 0 0.5rem var(--clr-shadow);
 }
 
 .search-box {
   width: 100%;
   max-width: 400px;
+  padding-left: var(--spacing-m);
+}
+
+.search-icon {
+  position: absolute;
+  left: 2rem;
+  top: 1.25rem;
+  color: var(--clr-shadow);
 }
 
 .select-box {
@@ -25,6 +35,7 @@
   appearance: none;
   padding: 1rem 1.5rem;
   width: 210px;
+  color: var(--clr-shadow);
 }
 
 @media (min-width: 640px) {
@@ -32,5 +43,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .query-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .search-box {
+    width: 400px;
   }
 }
