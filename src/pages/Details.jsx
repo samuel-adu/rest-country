@@ -9,7 +9,7 @@ function Details() {
   const { name } = useParams();
 
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
+    fetch(`https://restcountries.com/v3.1/alpha/${name}`)
       .then((res) => res.json())
       .then((data) => setCurrentCountry(data[0]));
   }, [name]);
@@ -17,10 +17,24 @@ function Details() {
   if (!currentCountry) {
     return (
       <div className="container">
-        <p>Loading</p>
+        <p>Loading</p>;
       </div>
     );
   }
+
+  const currencyArray = Object.values(currentCountry.currencies);
+  const currency = currencyArray.map((item, index) => (
+    <span key={index} className="capitalize">
+      {item.name}
+    </span>
+  ));
+
+  const languageArray = Object.values(currentCountry.languages);
+  const language = languageArray.map((language, index) => (
+    <span key={index}>
+      {`${language}${index === languageArray.length - 1 ? '' : ', '}`}
+    </span>
+  ));
 
   return (
     <div className="container">
@@ -49,11 +63,11 @@ function Details() {
                 <span>{currentCountry.population.toLocaleString()}</span>
               </p>
               <p>
-                Continent:
+                Region:
                 <span>{currentCountry.region}</span>
               </p>
               <p>
-                Region:
+                Sub Region:
                 <span>{currentCountry.subregion}</span>
               </p>
               <p>
@@ -67,30 +81,19 @@ function Details() {
                 Top Level Domain:
                 <span>{currentCountry.tld.map((item) => item)}</span>
               </p>
-              <p>
-                Currencies:
-                {/* <span>{currentCountry.currencies.name}</span> */}
-              </p>
-              <p>
-                Languages:
-                {/* 
-                {currentCountry.languages &&
-                  currentCountry.languages.map((language) => (
-                    <span>{language.name}</span>
-                  ))}
-                */}
-              </p>
+              <p>Currencies:{currency}</p>
+              <p>Languages:{language}</p>
             </div>
           </div>
 
           <div className="col">
-            <p className="border">Border Countries:</p>
+            <p className="">Border Countries:</p>
 
             <div className="border-links">
               {currentCountry.borders
                 ? currentCountry.borders.map((country) => (
                     <Fragment key={country}>
-                      <Button path={`/${country}`}>{country}</Button>
+                      <Button path={country}>{country}</Button>
                     </Fragment>
                   ))
                 : null}

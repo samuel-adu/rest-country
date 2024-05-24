@@ -34,6 +34,7 @@ function HomePage() {
               region={item.region}
               population={item.population}
               capital={item.capital}
+              cioc={item.cioc}
             />
           </React.Fragment>
         ))}

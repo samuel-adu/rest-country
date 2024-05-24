@@ -23,11 +23,6 @@
   font-size: var(--text-s);
 }
 
-.border {
-  display: flex;
-  gap: 0.5rem;
-}
-
 .back-btn {
   margin-bottom: var(--spacing-m);
 }
