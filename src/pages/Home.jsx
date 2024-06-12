@@ -1,49 +1,51 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import '../styles/home.css';
-import CardList from '../components/CardList';
-import SelectBox from '../components/SelectBox';
+import Card from '../components/Card';
+import SelectInput from '../components/SelectInput';
+import SearchInput from '../components/SearchInput';
+import { useDataContext } from '../hooks/useDataContext';
 
-function HomePage({
-  data,
-  filteredData,
-  setFilteredData,
-  handleCardListClick,
-}) {
-  const [region, setRegion] = useState('');
+function HomePage() {
+  const { data, countryList, setCountryList } = useDataContext();
   const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
 
-  function filterByRegion(event) {
-    const { value } = event.target;
-    setRegion(value);
-    setFilteredData(
-      data.filter((item) => item.region.toLowerCase() === value.toLowerCase())
-    );
-    setCountry('');
+  function handleSearch(event) {
+    const searchQuery = event.target.value;
+    setCountry(searchQuery);
+    const searchResult = searchQuery
+      ? data.filter((item) =>
+          item.name.common.toLowerCase().includes(country.toLowerCase())
+        )
+      : data;
+    setCountryList(searchResult);
   }
 
-  function findCountryByName(event) {
-    const { value } = event.target;
-    setCountry(value);
-    setFilteredData(
-      data.filter((item) =>
-        item.name.toLowerCase().includes(value.toLowerCase())
-      )
-    );
-    setRegion('');
+  function handleFilter(event) {
+    const selectedOption = event.target.value;
+    setRegion(selectedOption);
+    const filteredList = selectedOption
+      ? data.filter(
+          (country) => country.region.toLowerCase() === selectedOption
+        )
+      : data;
+    setCountryList(filteredList);
   }
 
   return (
     <div className="container">
-      <SelectBox
-        country={country}
-        handleCountrySearch={findCountryByName}
-        handleRegionChange={filterByRegion}
-        region={region}
-      />
-      <CardList
-        filteredData={filteredData}
-        onCardListClick={handleCardListClick}
-      />
+      <div className="query-bar">
+        <SearchInput country={country} handleSearch={handleSearch} />
+        <SelectInput region={region} handleFilter={handleFilter} />
+      </div>
+
+      <div className="card-list">
+        {countryList.map((item) => (
+          <React.Fragment key={item.name.common}>
+            <Card country={item} />
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 }

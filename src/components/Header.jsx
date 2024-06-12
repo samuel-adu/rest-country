@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import '../styles/header.css';
-import { ThemeContext } from '../Context/ThemeContext';
+import { ThemeContext } from '../context/ThemeContext';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
 function Header() {
