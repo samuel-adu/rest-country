@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import '../styles/details.css';
 import Button from '../components/Button';
@@ -9,7 +9,7 @@ function Details() {
   const { name } = useParams();
 
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/alpha/${name}`)
+    fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
       .then((res) => res.json())
       .then((data) => setCurrentCountry(data[0]));
   }, [name]);
@@ -17,7 +17,7 @@ function Details() {
   if (!currentCountry) {
     return (
       <div className="container">
-        <p>Loading</p>;
+        <p>Loading</p>
       </div>
     );
   }
@@ -93,7 +93,7 @@ function Details() {
               {currentCountry.borders
                 ? currentCountry.borders.map((country) => (
                     <Fragment key={country}>
-                      <Button path={country}>{country}</Button>
+                      <Link to={country}>{country}</Link>
                     </Fragment>
                   ))
                 : null}

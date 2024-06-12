@@ -9,8 +9,10 @@ function HomePage() {
   const [data, setData] = useState([]);
   const [countryList, setCountryList] = useState([]);
 
+  // https://restcountries.eu/rest/v2/all
+
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/all`)
+    fetch('https://restcountries.com/v3.1/all')
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -28,14 +30,7 @@ function HomePage() {
       <div className="card-list">
         {countryList.map((item) => (
           <React.Fragment key={item.name.common}>
-            <Card
-              name={item.name.common}
-              flag={item.flags.svg}
-              region={item.region}
-              population={item.population}
-              capital={item.capital}
-              cioc={item.cioc}
-            />
+            <Card country={item} />
           </React.Fragment>
         ))}
       </div>
