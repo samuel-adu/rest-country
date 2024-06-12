@@ -5,7 +5,7 @@ function Card({ country }) {
   const { name, flags, population, region, capital, showCountryDetails } =
     country;
   return (
-    <Link to={`/${name.common}`} onClick={showCountryDetails}>
+    <Link to={`${name.common}`} onClick={showCountryDetails}>
       <div className="card">
         <img className="card-img" src={flags.svg} alt={`flag of ${name}`} />
 

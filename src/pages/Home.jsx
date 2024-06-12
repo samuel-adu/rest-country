@@ -1,30 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/home.css';
-import { useEffect, useState } from 'react';
 import Card from '../components/Card';
-import SelectOption from '../components/SelectBox';
-import SearchInput from '../components/SearchBox';
+import SelectInput from '../components/SelectInput';
+import SearchInput from '../components/SearchInput';
+import { useDataContext } from '../hooks/useDataContext';
 
 function HomePage() {
-  const [data, setData] = useState([]);
-  const [countryList, setCountryList] = useState([]);
+  const { data, countryList, setCountryList } = useDataContext();
+  const [country, setCountry] = useState('');
+  const [region, setRegion] = useState('');
 
-  // https://restcountries.eu/rest/v2/all
+  function handleSearch(event) {
+    const searchQuery = event.target.value;
+    setCountry(searchQuery);
+    const searchResult = searchQuery
+      ? data.filter((item) =>
+          item.name.common.toLowerCase().includes(country.toLowerCase())
+        )
+      : data;
+    setCountryList(searchResult);
+  }
 
-  useEffect(() => {
-    fetch('https://restcountries.com/v3.1/all')
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setCountryList(data);
-      });
-  }, []);
+  function handleFilter(event) {
+    const selectedOption = event.target.value;
+    setRegion(selectedOption);
+    const filteredList = selectedOption
+      ? data.filter(
+          (country) => country.region.toLowerCase() === selectedOption
+        )
+      : data;
+    setCountryList(filteredList);
+  }
 
   return (
     <div className="container">
       <div className="query-bar">
-        <SearchInput data={data} setCountryList={setCountryList} />
-        <SelectOption data={data} setCountryList={setCountryList} />
+        <SearchInput country={country} handleSearch={handleSearch} />
+        <SelectInput region={region} handleFilter={handleFilter} />
       </div>
 
       <div className="card-list">

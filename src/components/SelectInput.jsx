@@ -1,24 +1,10 @@
-import { useState } from 'react';
-
-function SelectBox({ setCountryList, data }) {
-  const [region, setRegion] = useState('');
-
-  function handleChange(event) {
-    const { value } = event.target;
-    setRegion(value);
-    if (value) {
-      setCountryList(
-        data.filter((item) => item.region.toLowerCase() === value)
-      );
-    }
-  }
-
+function SelectInput({ handleFilter, region }) {
   return (
     <select
       className="form-control select-box"
       name="region"
       value={region}
-      onChange={handleChange}
+      onChange={handleFilter}
     >
       <option value="">Filter by Region</option>
       <option value="africa">Africa</option>
@@ -30,4 +16,4 @@ function SelectBox({ setCountryList, data }) {
   );
 }
 
-export default SelectBox;
+export default SelectInput;

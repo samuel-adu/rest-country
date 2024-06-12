@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { DataContext } from '../context/DataContext';
 
 export function useDataContext() {
-  const { data } = useContext(DataContext);
+  const context = useContext(DataContext);
 
-  return data;
+  return context;
 }

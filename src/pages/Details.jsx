@@ -3,10 +3,12 @@ import { useParams, Link } from 'react-router-dom';
 import { FaArrowLeftLong } from 'react-icons/fa6';
 import '../styles/details.css';
 import Button from '../components/Button';
+import { useDataContext } from '../hooks/useDataContext';
 
 function Details() {
   const [currentCountry, setCurrentCountry] = useState(null);
   const { name } = useParams();
+  const { data } = useDataContext();
 
   useEffect(() => {
     fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
@@ -35,6 +37,11 @@ function Details() {
       {`${language}${index === languageArray.length - 1 ? '' : ', '}`}
     </span>
   ));
+
+  function getCountry(code) {
+    const country = data.find((item) => item.cca3 === code);
+    return country.name.common;
+  }
 
   return (
     <div className="container">
@@ -86,19 +93,22 @@ function Details() {
             </div>
           </div>
 
-          <div className="col">
-            <p className="">Border Countries:</p>
-
-            <div className="border-links">
-              {currentCountry.borders
-                ? currentCountry.borders.map((country) => (
-                    <Fragment key={country}>
-                      <Link to={country}>{country}</Link>
-                    </Fragment>
-                  ))
-                : null}
+          {currentCountry.borders && (
+            <div className="col">
+              <p className="">Border Countries:</p>
+              <div className="border-links">
+                {currentCountry.borders
+                  ? currentCountry.borders.map((country) => (
+                      <Fragment key={country}>
+                        <Link to={`/${getCountry(country)}`} className="btn">
+                          {getCountry(country)}
+                        </Link>
+                      </Fragment>
+                    ))
+                  : null}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
