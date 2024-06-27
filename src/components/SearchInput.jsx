@@ -11,6 +11,7 @@ function SearchInput({ country, handleSearch }) {
         name="country"
         value={country}
         onChange={handleSearch}
+        id="searchEl"
       />
     </div>
   );
