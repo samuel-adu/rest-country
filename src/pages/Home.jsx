@@ -12,10 +12,11 @@ function HomePage() {
 
   function handleSearch(event) {
     const searchQuery = event.target.value;
+    setRegion('');
     setCountry(searchQuery);
     const searchResult = searchQuery
       ? data.filter((item) =>
-          item.name.common.toLowerCase().includes(country.toLowerCase())
+          item.name.common.toLowerCase().includes(searchQuery.toLowerCase())
         )
       : data;
     setCountryList(searchResult);
@@ -23,6 +24,7 @@ function HomePage() {
 
   function handleFilter(event) {
     const selectedOption = event.target.value;
+    setCountry('');
     setRegion(selectedOption);
     const filteredList = selectedOption
       ? data.filter(
