@@ -3,27 +3,32 @@ header {
   box-shadow: 0 0 0.25rem 0.125px var(--clr-shadow);
 }
 
+.main-heading {
+  font-size: 0.875rem;
+  font-weight: var(--fw-bold);
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-block: var(--spacing-s);
-  margin-bottom: var(--spacing-s);
+  padding-block: 1.875rem;
+  margin-bottom: 1.5rem;
 }
 
 .toggle-btn {
-  font-size: var(--text-s);
-  background-color: var(--bg-secondary);
+  font-size: 0.75rem;
+  background-color: var(--bg-primary);
   display: inline-block;
   color: var(--text-primary);
   border: 0;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
   cursor: pointer;
   border-radius: 4px;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.25rem;
+  gap: 0.5rem;
 }
 
 .toggle-icon {
@@ -34,4 +39,19 @@ header {
   background-color: var(--bg-primary);
   color: hsl(0, 0, 100%);
   box-shadow: 0 0 0.5rem var(--clr-shadow);
+}
+
+@media (min-width: 640px) {
+  .navbar {
+    padding-block: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .main-heading {
+    font-size: 1.5rem;
+  }
+
+  .toggle-btn {
+    font-size: 1rem;
+  }
 }

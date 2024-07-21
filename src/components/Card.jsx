@@ -12,21 +12,21 @@ function Card({ country }) {
           onClick={showCountryDetails}
           className="link-card"
         >
-          <img className="card-img" src={flags.svg} alt={`flag of ${name}`} />
+          <img className="card__img" src={flags.svg} alt={`flag of ${name}`} />
         </Link>
       </div>
 
       <div className="card-desc">
-        <p className="card-heading">{name.common}</p>
-        <p className="card-text">
+        <p className="card__heading">{name.common}</p>
+        <p className="card__text">
           Population:
           <span>{population.toLocaleString()}</span>
         </p>
-        <p className="card-text">
+        <p className="card__text">
           Region:
           <span>{region}</span>
         </p>
-        <p className="card-text">
+        <p className="card__text">
           Capital:
           <span>{capital}</span>
         </p>

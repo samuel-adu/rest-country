@@ -35,19 +35,19 @@ function HomePage() {
   }
 
   return (
-    <div className="container">
+    <div className="home-page">
       <div className="query-bar">
         <SearchInput country={country} handleSearch={handleSearch} />
         <SelectInput region={region} handleFilter={handleFilter} />
       </div>
 
-      <div className="card-list">
+      <section className="card-list">
         {countryList.map((item) => (
           <React.Fragment key={item.name.common}>
             <Card country={item} />
           </React.Fragment>
         ))}
-      </div>
+      </section>
     </div>
   );
 }
