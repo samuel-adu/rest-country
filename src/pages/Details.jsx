@@ -44,24 +44,26 @@ function Details() {
   }
 
   return (
-    <div className="container">
+    <article className="detail-page">
       <Button path={'..'} className="back-btn">
         <FaArrowLeftLong />
         <span>back</span>
       </Button>
 
-      <div className="row current-country">
-        <img
-          src={currentCountry.flags.svg}
-          alt={`flag of ${currentCountry.name.common}`}
-          className="flag"
-        />
+      <div className="current-country">
+        <div className="current-country-flag">
+          <img
+            src={currentCountry.flags.svg}
+            alt={`flag of ${currentCountry.name.common}`}
+            className="flag"
+          />
+        </div>
 
-        <div className="col">
+        <div className="current-country-detail">
           <h2 className="current-country-name">{currentCountry.name.common}</h2>
 
-          <div className="row">
-            <div className="col">
+          <div className="current-country-info lg:flex lg:justify-between lg:items-start">
+            <div className="flex-1">
               <p>
                 Official Name:<span>{currentCountry.name.official}</span>
               </p>
@@ -83,7 +85,7 @@ function Details() {
               </p>
             </div>
 
-            <div className="col">
+            <div className="flex-1">
               <p>
                 Top Level Domain:
                 <span>{currentCountry.tld.map((item) => item)}</span>
@@ -94,7 +96,7 @@ function Details() {
           </div>
 
           {currentCountry.borders && (
-            <div className="col">
+            <div className="border-countries">
               <p className="">Border Countries:</p>
               <div className="border-links">
                 {currentCountry.borders
@@ -111,7 +113,7 @@ function Details() {
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 

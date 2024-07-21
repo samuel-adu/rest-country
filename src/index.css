@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+*,
+::before,
+::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -27,26 +29,11 @@
 
   --clr-shadow: hsl(0, 0%, 52%);
 
-  --spacing-l: 8rem;
-  --spacing-m: 4rem;
-  --spacing-s: 2rem;
-  --spacing-xs: 1rem;
-  --spacing-base: 0.5rem;
-
-  --text-l: 1rem;
-  --text-base: 0.875rem;
-  --text-s: 0.75rem;
-
   --fw-bold: 800;
   --fw-semibold: 600;
   --fw-light: 300;
 
   --ff-primary: 'Nunito Sans', sans-serif;
-
-  /* color-scheme: light dark;
-  --bg-primary: hsl(0, 0%, 95%);
-  --bg-secondary: hsl(0, 0%, 100%);
-  --text-primary: hsl(200, 15%, 8%); */
 }
 
 body {
@@ -61,9 +48,7 @@ img {
 }
 
 .container {
-  width: 90%;
-  max-width: 1280px;
-  margin: 0 auto;
+  padding-inline: 1rem;
 }
 
 h1,
@@ -73,23 +58,14 @@ h4,
 h5,
 h6 {
   line-height: 1.1;
-  font-weight: var(--fw-bold);
 }
 
 p {
   line-height: 1.6;
-  font-weight: var(--fw-semibold);
-}
-
-p span {
-  font-weight: var(--fw-light);
-  margin-left: 0.125rem;
 }
 
 a {
   text-decoration: none;
-  font-family: var(--ff-primary);
-  font-size: var(--text-s);
   color: inherit;
 }
 
@@ -105,4 +81,18 @@ a {
   --bg-primary: hsl(207, 26%, 17%);
   --bg-secondary: hsl(209, 23%, 22%);
   --text-primary: hsl(0, 0%, 100%);
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-inline: 0;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1280px;
+  }
 }

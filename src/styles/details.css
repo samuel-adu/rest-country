@@ -1,37 +1,84 @@
 .flag {
-  margin-bottom: var(--spacing-m);
+  object-fit: cover;
+}
+
+.current-country > div {
+  margin-bottom: 3rem;
+}
+
+.current-country-detail > div {
+  margin-bottom: 2rem;
+}
+
+.current-country-info > div {
+  margin-bottom: 2rem;
 }
 
 .current-country-name {
-  margin-bottom: var(--spacing-s);
+  font-size: 1.375rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.5;
+  margin-bottom: 1.125rem;
 }
 
 .current-country p {
-  margin-bottom: var(--spacing-base);
+  font-weight: var(--fw-semibold);
+  margin-bottom: 0.5rem;
 }
 
-.col {
-  margin-bottom: var(--spacing-s);
+.current-country p span {
+  font-weight: var(--fw-light);
+}
+
+.current-country p span:first-child {
+  margin-left: 1ch;
+}
+
+.border-countries {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .border-links {
   display: flex;
-  gap: var(--spacing-base);
+  gap: 0.5rem;
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: flex-start;
-  font-size: var(--text-s);
+  font-size: 0.75rem;
 }
 
 .back-btn {
-  margin-bottom: var(--spacing-m);
+  margin-block: 1rem 4rem;
 }
 
-@media (min-width: 860px) {
-  .row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+@media (min-width: 640px) {
+  .back-btn {
+    margin-block: 2rem 5rem;
+  }
+
+  .current-country-name {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .current-country-info > div {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .current-country {
+    display: flex;
     align-items: center;
-    gap: var(--spacing-l);
+    justify-content: space-between;
+    gap: 9rem;
+  }
+
+  .current-country > div {
+    flex: 1;
   }
 }

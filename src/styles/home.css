@@ -8,8 +8,8 @@
   font-family: var(--ff-primary);
   line-height: 1.5;
   color: var(--clr-shadow);
-  margin-bottom: var(--spacing-s);
-  padding: 1rem 1.5rem;
+  margin-bottom: 2.5rem;
+  padding: 1.125rem 1.5rem;
   border: 1px solid var(--bg-primary);
   border-radius: 4px;
   appearance: none;
@@ -20,29 +20,33 @@
 .search-box {
   width: 100%;
   max-width: 400px;
-  padding-left: var(--spacing-m);
+  padding-left: 4.5rem;
 }
 
 .search-icon {
   position: absolute;
   left: 2rem;
-  top: 1.25rem;
+  top: 1.5rem;
   color: var(--clr-shadow);
 }
 
 .select-box {
   border: none;
   appearance: none;
-  padding: 1rem 1.5rem;
+  padding: 1.125rem 1.5rem;
   width: 210px;
   color: var(--clr-shadow);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .form {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .form-control {
+    margin-bottom: 3rem;
   }
 
   .query-bar {
