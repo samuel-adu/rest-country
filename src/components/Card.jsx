@@ -8,7 +8,7 @@ function Card({ country }) {
     <div className="card">
       <div className="card-image">
         <Link
-          to={`${name.common}`}
+          to={`${name.common.toLowerCase()}`}
           onClick={showCountryDetails}
           className="link-card"
         >

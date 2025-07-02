@@ -8,7 +8,7 @@ function DataContextProvider({ children }) {
 
   useEffect(() => {
     fetch(
-      'https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital'
+      'https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital,cca3'
     )
       .then((res) => res.json())
       .then((data) => {

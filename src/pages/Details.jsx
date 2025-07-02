@@ -40,7 +40,7 @@ function Details() {
 
   function getCountry(code) {
     const country = data.find((item) => item.cca3 === code);
-    return country.name.common;
+    return country?.name.common;
   }
 
   return (
